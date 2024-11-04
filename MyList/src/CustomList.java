@@ -294,14 +294,10 @@ public class CustomList<T> implements List<T> {
             return false;
         }
 
-        boolean isModified = false;
         for (T elem : c) {
-            // Оставляю ради приличия, поскольку add(elem) будет всегда true
-            if (add(elem)) {
-                isModified = true;
-            }
+            add(elem);
         }
-        return isModified;
+        return true;
     }
 
     /**
