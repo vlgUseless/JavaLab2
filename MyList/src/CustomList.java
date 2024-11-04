@@ -458,9 +458,9 @@ public class CustomList<T> implements List<T> {
      *                                       ({@code index < 0 || index >= size()})
      */
     @Override
+    @SuppressWarnings("unchecked")
     public T set(int index, T element) {
         checkIndex(index);
-        @SuppressWarnings("unchecked")
         T oldValue = (T) elements[index];
         elements[index] = element;
         return oldValue;
