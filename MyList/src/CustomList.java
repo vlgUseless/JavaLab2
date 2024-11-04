@@ -518,4 +518,12 @@ public class CustomList<T> implements List<T> {
     public List<T> subList(int fromIndex, int toIndex) {
         return List.of();
     }
+
+    private void ensureCapacity() {
+        if (size == elements.length) {
+            Object[] newElements = new Object[size * 2];
+            System.arraycopy(elements, 0, newElements, 0, size);
+            elements = newElements;
+        }
+    }
 }
