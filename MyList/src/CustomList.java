@@ -310,7 +310,31 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
+        if (c == null) {
+            throw new NullPointerException("Collection must not be null");
+        }
+
+        checkIndex(index);
+
+        if (c.isEmpty()) {
+            return false;
+        }
+
+        int numNew = c.size();
+        int newCapacity = size + numNew;
+        while (elements.length < newCapacity) {
+            ensureCapacity();
+        }
+
+        System.arraycopy(elements, index, elements, index + numNew, size - index);
+
+        int i = index;
+        for (T elem : c) {
+            elements[i++] = elem;
+        }
+
+        size += numNew;
+        return true;
     }
 
     /**
