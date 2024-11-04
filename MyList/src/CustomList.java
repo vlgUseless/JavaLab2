@@ -483,7 +483,15 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        ensureCapacity();
 
+        System.arraycopy(elements, index, elements, index + 1, size - index);
+
+        elements[index] = element;
+        size++;
     }
 
     /**
