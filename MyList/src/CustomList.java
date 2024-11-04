@@ -2,6 +2,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Arrays;
 
 public class CustomList<T> implements List<T> {
     private Object[] elements;
@@ -81,7 +82,7 @@ public class CustomList<T> implements List<T> {
      *
      * @return an array containing all of the elements in this list in proper
      * sequence
-     * @see *Arrays#asList(Object[])
+     * @see Arrays#asList(Object[])
      */
     @Override
     public Object[] toArray() {
