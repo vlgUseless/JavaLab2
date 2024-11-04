@@ -236,7 +236,12 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        if (c == null) return false;
+
+        for (var elem : c) {
+            if (!contains(elem)) return false;
+        }
+        return true;
     }
 
     /**
