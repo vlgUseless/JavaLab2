@@ -59,8 +59,9 @@ public class CustomList<T> implements List<T> {
      *
      * @return an iterator over the elements in this list in proper sequence
      */
-    @SuppressWarnings("unchecked")
+
     @Override
+    @SuppressWarnings("unchecked")
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             private int cursor = 0;
@@ -138,8 +139,9 @@ public class CustomList<T> implements List<T> {
      *                              this list
      * @throws NullPointerException if the specified array is null
      */
-    @SuppressWarnings("unchecked")
+
     @Override
+    @SuppressWarnings("unchecked")
     public <T1> T1[] toArray(T1[] a) {
         if (a.length < size) {
             return (T1[]) Arrays.copyOf(elements, size, a.getClass());
@@ -355,8 +357,9 @@ public class CustomList<T> implements List<T> {
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   ({@code index < 0 || index >= size()})
      */
-    @SuppressWarnings("unchecked")
+
     @Override
+    @SuppressWarnings("unchecked")
     public T get(int index) {
         checkIndex(index);
         return (T) elements[index];
@@ -422,8 +425,9 @@ public class CustomList<T> implements List<T> {
      * @throws IndexOutOfBoundsException     if the index is out of range
      *                                       ({@code index < 0 || index >= size()})
      */
-    @SuppressWarnings("unchecked")
+
     @Override
+    @SuppressWarnings("unchecked")
     public T remove(int index) {
         checkIndex(index);
         T oldValue = (T) elements[index];
