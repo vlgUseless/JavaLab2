@@ -267,7 +267,18 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        if (c == null) {
+            throw new NullPointerException("Collection must not be null");
+        }
+
+        boolean isModified = false;
+        for (T elem : c) {
+            // Оставляю ради приличия, поскольку add(elem) будет всегда true
+            if (add(elem)) {
+                isModified = true;
+            }
+        }
+        return isModified;
     }
 
     /**
