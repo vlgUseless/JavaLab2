@@ -96,7 +96,7 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return Arrays.copyOf(elements, size);
     }
 
     /**
