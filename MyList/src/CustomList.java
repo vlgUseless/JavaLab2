@@ -8,6 +8,10 @@ public class CustomList<T> implements List<T>, Iterable<T> {
     private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
 
+    public CustomList() {
+        elements = new Object[DEFAULT_CAPACITY];
+    }
+
     /**
      * Returns the number of elements in this list.  If this list contains
      * more than {@code Integer.MAX_VALUE} elements, returns
