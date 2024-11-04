@@ -236,7 +236,9 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean containsAll(Collection<?> c) {
-        if (c == null) return false;
+        if (c == null) {
+            throw new NullPointerException("Collection must not be null");
+        }
 
         for (var elem : c) {
             if (!contains(elem)) return false;
@@ -269,6 +271,10 @@ public class CustomList<T> implements List<T> {
     public boolean addAll(Collection<? extends T> c) {
         if (c == null) {
             throw new NullPointerException("Collection must not be null");
+        }
+
+        if (c.isEmpty()) {
+            return false;
         }
 
         boolean isModified = false;
