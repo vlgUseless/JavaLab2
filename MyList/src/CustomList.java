@@ -138,9 +138,17 @@ public class CustomList<T> implements List<T> {
      *                              this list
      * @throws NullPointerException if the specified array is null
      */
+    @SuppressWarnings("unchecked")
     @Override
     public <T1> T1[] toArray(T1[] a) {
-        return null;
+        if (a.length < size) {
+            return (T1[]) Arrays.copyOf(elements, size, a.getClass());
+        }
+        System.arraycopy(elements, 0, a, 0, size);
+        if (a.length > size) {
+            a[size] = null;
+        }
+        return a;
     }
 
     /**
