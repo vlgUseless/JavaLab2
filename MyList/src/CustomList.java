@@ -211,12 +211,23 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean remove(Object o) {
-        for (int i = 0; i < size; i++) {
-            if (elements[i].equals(o)) {
-                int numMoved = size - i - 1;
-                System.arraycopy(elements, i + 1, elements, i, numMoved);
-                elements[--size] = null;
-                return true;
+        if (o == null) {
+            for (int i = 0; i < size; i++) {
+                if (elements[i] == null) {
+                    int numMoved = size - i - 1;
+                    System.arraycopy(elements, i + 1, elements, i, numMoved);
+                    elements[--size] = null;
+                    return true;
+                }
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (elements[i].equals(o)) {
+                    int numMoved = size - i - 1;
+                    System.arraycopy(elements, i + 1, elements, i, numMoved);
+                    elements[--size] = null;
+                    return true;
+                }
             }
         }
         return false;
