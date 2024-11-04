@@ -442,7 +442,11 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        checkIndex(index);
+        @SuppressWarnings("unchecked")
+        T oldValue = (T) elements[index];
+        elements[index] = element;
+        return oldValue;
     }
 
     /**
