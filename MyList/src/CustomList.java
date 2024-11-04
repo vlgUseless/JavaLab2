@@ -3,7 +3,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class CustomList<T> implements List<T>, Iterable<T> {
+public class CustomList<T> implements List<T> {
     private Object[] elements;
     private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
