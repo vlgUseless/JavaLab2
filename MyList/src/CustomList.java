@@ -1,8 +1,4 @@
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Arrays;
+import java.util.*;
 
 public class CustomList<T> implements List<T> {
     private Object[] elements;
@@ -63,9 +59,23 @@ public class CustomList<T> implements List<T> {
      *
      * @return an iterator over the elements in this list in proper sequence
      */
+    @SuppressWarnings("unchecked")
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+            private int cursor = 0;
+
+            @Override
+            public boolean hasNext() {
+                return cursor < size;
+            }
+
+            @Override
+            public T next() {
+                if (cursor >= size) throw new NoSuchElementException();
+                return (T) elements[cursor++];
+            }
+        };
     }
 
     /**
