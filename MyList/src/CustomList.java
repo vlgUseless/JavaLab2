@@ -336,9 +336,11 @@ public class CustomList<T> implements List<T> {
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   ({@code index < 0 || index >= size()})
      */
+    @SuppressWarnings("unchecked")
     @Override
     public T get(int index) {
-        return null;
+        checkIndex(index);
+        return (T) elements[index];
     }
 
     /**
