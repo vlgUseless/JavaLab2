@@ -156,7 +156,9 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean add(T t) {
-        return false;
+        ensureCapacity();
+        elements[size++] = t;
+        return true;
     }
 
     /**
