@@ -530,7 +530,21 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public int indexOf(Object o) {
-        return 0;
+        if (o == null) {
+            for (int i = 0; i < size; i++) {
+                if (elements[i] == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (elements[i].equals(o)) {
+                    return i;
+                }
+            }
+        }
+
+        return -1;
     }
 
     /**
