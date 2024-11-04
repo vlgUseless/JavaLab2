@@ -48,8 +48,14 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean contains(Object o) {
-        for (int i = 0; i < size; i++) {
-            if (elements[i].equals(o)) return true;
+        if (o == null) {
+            for (int i = 0; i < size; i++) {
+                if (elements[i] == null) return true;
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (elements[i].equals(o)) return true;
+            }
         }
         return false;
     }
