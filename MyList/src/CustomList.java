@@ -404,9 +404,15 @@ public class CustomList<T> implements List<T> {
      * @throws IndexOutOfBoundsException     if the index is out of range
      *                                       ({@code index < 0 || index >= size()})
      */
+    @SuppressWarnings("unchecked")
     @Override
     public T remove(int index) {
-        return null;
+        checkIndex(index);
+        T oldValue = (T) elements[index];
+        int numMoved = size - index - 1;
+        if (numMoved > 0) System.arraycopy(elements, index + 1, elements, index, numMoved);
+        elements[--size] = null;
+        return oldValue;
     }
 
     /**
