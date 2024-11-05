@@ -2,8 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomListTest {
 
@@ -259,6 +258,9 @@ public class CustomListTest {
         arrayList.add(5);
         arrayList.add(3);
 
+        customList.removeAll(Collections.emptyList());
+        assertEquals(3, customList.size());
+
         customList.removeAll(collection);
         arrayList.removeAll(collection);
 
@@ -267,6 +269,9 @@ public class CustomListTest {
 
         assertEquals(5, customList.get(0));
         assertEquals(arrayList.get(0), customList.get(0));
+
+        assertFalse(customList.contains(2));
+        assertFalse(customList.contains(3));
     }
 
     @Test
