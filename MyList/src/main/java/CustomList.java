@@ -822,8 +822,18 @@ public class CustomList<T> implements List<T> {
      *                                   fromIndex > toIndex})
      */
     @Override
+    @SuppressWarnings("unchecked")
     public List<T> subList(int fromIndex, int toIndex) {
-        return List.of();
+        if (fromIndex < 0 || toIndex > size || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException("Invalid fromIndex or toIndex");
+        }
+
+        CustomList<T> sublist = new CustomList<>();
+        for (int i = fromIndex; i < toIndex; i++) {
+            sublist.add((T) elements[i]);
+        }
+
+        return sublist;
     }
 
     private void ensureCapacity() {
