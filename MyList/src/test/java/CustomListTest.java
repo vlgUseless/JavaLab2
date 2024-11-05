@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -202,5 +203,30 @@ public class CustomListTest {
         assertEquals(customList.isEmpty(), arrayList.isEmpty());
         assertEquals(customList.size(), Integer.valueOf(0));
         assertEquals(customList.size(), arrayList.size());
+    }
+
+    @Test
+    void testAddAll() {
+        Collection<Integer> collection = new ArrayList<>();
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        collection.add(2);
+        collection.add(5);
+        collection.add(3);
+
+        customList.addAll(collection);
+        arrayList.addAll(collection);
+
+        assertEquals(customList.size(), collection.size());
+        assertEquals(customList.size(), arrayList.size());
+
+        assertEquals(customList.get(0), Integer.valueOf(2));
+        assertEquals(customList.get(1), Integer.valueOf(5));
+        assertEquals(customList.get(2), Integer.valueOf(3));
+
+        assertEquals(customList.get(0), arrayList.get(0));
+        assertEquals(customList.get(1), arrayList.get(1));
+        assertEquals(customList.get(2), arrayList.get(2));
     }
 }
