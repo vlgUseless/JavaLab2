@@ -638,8 +638,70 @@ public class CustomList<T> implements List<T> {
      * sequence)
      */
     @Override
+    @SuppressWarnings("unchecked")
     public ListIterator<T> listIterator() {
-        return null;
+        return new ListIterator<T>() {
+            private int cursor = 0;
+            private int lastReturned = -1;
+
+            @Override
+            public boolean hasNext() {
+                return cursor < size;
+            }
+
+            @Override
+            public T next() {
+                if (cursor >= size) throw new NoSuchElementException();
+                lastReturned = cursor;
+                return (T) elements[cursor++];
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                return cursor > 0;
+            }
+
+            @Override
+            public T previous() {
+                if (cursor <= 0) throw new NoSuchElementException();
+                lastReturned = --cursor;
+                return (T) elements[cursor];
+            }
+
+            @Override
+            public int nextIndex() {
+                return cursor;
+            }
+
+            @Override
+            public int previousIndex() {
+                return cursor - 1;
+            }
+
+            @Override
+            public void remove() {
+                if (lastReturned < 0) throw new IllegalStateException();
+                System.arraycopy(elements, lastReturned + 1, elements, lastReturned, size - lastReturned - 1);
+                elements[--size] = null;
+                cursor = lastReturned;
+                lastReturned = -1;
+            }
+
+            @Override
+            public void set(T t) {
+                if (lastReturned < 0) throw new IllegalStateException();
+                elements[lastReturned] = t;
+            }
+
+            @Override
+            public void add(T t) {
+                ensureCapacity();
+                System.arraycopy(elements, cursor, elements, cursor + 1, size - cursor);
+                elements[cursor++] = t;
+                size++;
+                lastReturned = -1;
+            }
+        };
     }
 
     /**
