@@ -206,7 +206,9 @@ public class CustomListTest {
         customList.clear();
         arrayList.clear();
 
-        assertEquals(arrayList.isEmpty(), customList.isEmpty());
+        assertTrue(customList.isEmpty());
+        assertTrue(arrayList.isEmpty());
+
         assertEquals(0, customList.size());
         assertEquals(0, arrayList.size());
     }
