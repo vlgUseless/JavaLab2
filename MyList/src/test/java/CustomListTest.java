@@ -181,4 +181,26 @@ public class CustomListTest {
         assertEquals(customList.lastIndexOf(2), arrayList.lastIndexOf(2));
         assertEquals(customList.lastIndexOf(5), arrayList.lastIndexOf(5));
     }
+
+    @Test
+    void testClear() {
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        customList.add(2);
+        customList.add(5);
+
+        arrayList.add(2);
+        arrayList.add(5);
+
+        assertEquals(customList.size(), Integer.valueOf(2));
+        assertEquals(customList.size(), arrayList.size());
+
+        customList.clear();
+        arrayList.clear();
+
+        assertEquals(customList.isEmpty(), arrayList.isEmpty());
+        assertEquals(customList.size(), Integer.valueOf(0));
+        assertEquals(customList.size(), arrayList.size());
+    }
 }
