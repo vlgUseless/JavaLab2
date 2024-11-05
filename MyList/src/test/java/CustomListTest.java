@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CustomListTest {
 
@@ -115,5 +116,25 @@ public class CustomListTest {
 
         assertEquals(customList.get(0), Integer.valueOf(5));
         assertEquals(customList.get(0), arrayList.get(0));
+    }
+
+    @Test
+    void testContains() {
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        customList.add(2);
+        customList.add(5);
+
+        arrayList.add(2);
+        arrayList.add(5);
+
+        assertEquals(customList.size(), Integer.valueOf(2));
+        assertEquals(customList.size(), arrayList.size());
+
+        assertEquals(customList.contains(2), arrayList.contains(2));
+        assertEquals(customList.contains(5), arrayList.contains(5));
+        assertEquals(customList.contains(-3), arrayList.contains(-3));
+        assertEquals(customList.contains(null), arrayList.contains(null));
     }
 }
