@@ -362,4 +362,31 @@ public class CustomListTest {
             assertEquals(customIter.previous(), arrayIter.previous());
         }
     }
+
+    @Test
+    void testNull() {
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        customList.add(2);
+        customList.add(null);
+        customList.add(3);
+
+        arrayList.add(2);
+        arrayList.add(null);
+        arrayList.add(3);
+
+        assertEquals(customList.size(), Integer.valueOf(3));
+        assertEquals(customList.size(), arrayList.size());
+
+        assertEquals(customList.contains(null), arrayList.contains(null));
+        assertEquals(customList.indexOf(null), arrayList.indexOf(null));
+
+        assertEquals(customList.remove(null), arrayList.remove(null));
+
+        assertEquals(customList.size(), Integer.valueOf(2));
+        assertEquals(customList.size(), arrayList.size());
+        assertEquals(customList.contains(null), arrayList.contains(null));
+        assertEquals(customList.indexOf(null), arrayList.indexOf(null));
+    }
 }
