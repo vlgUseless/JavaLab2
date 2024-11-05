@@ -5,6 +5,7 @@ out/
 .idea
 MyList.iml
 target/
+../q
 
 ### Eclipse ###
 .apt_generated
