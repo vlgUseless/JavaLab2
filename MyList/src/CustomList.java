@@ -376,7 +376,24 @@ public class CustomList<T> implements List<T> {
      */
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        if (c == null) {
+            throw new NullPointerException("Collection must not be null");
+        }
+
+        if (c.isEmpty()) {
+            return false;
+        }
+
+        boolean modified = false;
+        for (int i = 0; i < size; i++) {
+            if (c.contains(elements[i])) {
+                System.arraycopy(elements, i + 1, elements, i, size - i - 1);
+                elements[--size] = null;
+                i--;
+                modified = true;
+            }
+        }
+        return modified;
     }
 
     /**
