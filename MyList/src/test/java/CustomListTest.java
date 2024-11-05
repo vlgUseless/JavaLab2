@@ -137,4 +137,26 @@ public class CustomListTest {
         assertEquals(customList.contains(-3), arrayList.contains(-3));
         assertEquals(customList.contains(null), arrayList.contains(null));
     }
+
+    @Test
+    void testIndexOf() {
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        customList.add(2);
+        customList.add(5);
+        customList.add(2);
+        customList.add(5);
+
+        arrayList.add(2);
+        arrayList.add(5);
+        arrayList.add(2);
+        arrayList.add(5);
+
+        assertEquals(customList.size(), Integer.valueOf(4));
+        assertEquals(customList.size(), arrayList.size());
+
+        assertEquals(customList.indexOf(2), arrayList.indexOf(2));
+        assertEquals(customList.indexOf(5), arrayList.indexOf(5));
+    }
 }
