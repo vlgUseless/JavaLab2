@@ -301,6 +301,11 @@ public class CustomListTest {
         assertEquals(3, customList.get(1));
         assertEquals(arrayList.get(0), customList.get(0));
         assertEquals(arrayList.get(1), customList.get(1));
+
+        assertFalse(customList.contains(5));
+
+        customList.retainAll(Collections.emptyList());
+        assertTrue(customList.isEmpty());
     }
 
     @Test
