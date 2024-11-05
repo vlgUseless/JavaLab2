@@ -889,6 +889,14 @@ public class CustomList<T> implements List<T> {
             return removed;
         }
 
+        @Override
+        public void clear() {
+            for (int i = 0; i < size; i++) {
+                parentList.remove(offset);
+            }
+            size = 0;
+        }
+
         private void checkIndex(int index) {
             if (index < 0 || index >= size) {
                 throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
