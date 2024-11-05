@@ -1,9 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -334,6 +331,35 @@ public class CustomListTest {
 
         while (customIter.hasNext() || arrayIter.hasNext()) {
             assertEquals(customIter.next(), arrayIter.next());
+        }
+    }
+
+    @Test
+    void testListIterator() {
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        customList.add(2);
+        customList.add(5);
+        customList.add(3);
+
+        arrayList.add(2);
+        arrayList.add(5);
+        arrayList.add(3);
+
+        ListIterator<Integer> customIter = customList.listIterator();
+        ListIterator<Integer> arrayIter = arrayList.listIterator();
+
+        while (customIter.hasNext() || arrayIter.hasNext()) {
+            assertEquals(customIter.hasNext(), arrayIter.hasNext());
+            assertEquals(customIter.nextIndex(), arrayIter.nextIndex());
+            assertEquals(customIter.next(), arrayIter.next());
+        }
+
+        while (customIter.hasPrevious() || arrayIter.hasPrevious()) {
+            assertEquals(customIter.hasPrevious(), arrayIter.hasPrevious());
+            assertEquals(customIter.previousIndex(), arrayIter.previousIndex());
+            assertEquals(customIter.previous(), arrayIter.previous());
         }
     }
 }
