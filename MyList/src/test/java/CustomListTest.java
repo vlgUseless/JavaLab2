@@ -425,5 +425,8 @@ public class CustomListTest {
         assertEquals(2, arrayList.size());
         assertEquals(arrayList.contains(null), customList.contains(null));
         assertEquals(arrayList.indexOf(null), customList.indexOf(null));
+
+        assertEquals(arrayList.get(0), customList.get(0));
+        assertEquals(arrayList.get(1), customList.get(1));
     }
 }
