@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -313,5 +314,26 @@ public class CustomListTest {
 
         assertEquals(customList.containsAll(collection1), arrayList.containsAll(collection1));
         assertEquals(customList.containsAll(collection2), arrayList.containsAll(collection2));
+    }
+
+    @Test
+    void testIterator() {
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        customList.add(2);
+        customList.add(5);
+        customList.add(3);
+
+        arrayList.add(2);
+        arrayList.add(5);
+        arrayList.add(3);
+
+        Iterator<Integer> customIter = customList.iterator();
+        Iterator<Integer> arrayIter = arrayList.iterator();
+
+        while (customIter.hasNext() || arrayIter.hasNext()) {
+            assertEquals(customIter.next(), arrayIter.next());
+        }
     }
 }
