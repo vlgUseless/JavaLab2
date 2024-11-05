@@ -329,11 +329,13 @@ public class CustomListTest {
         arrayList.add(5);
         arrayList.add(3);
 
-        assertEquals(3, customList.size());
-        assertEquals(arrayList.size(), customList.size());
-
         assertEquals(arrayList.containsAll(collection1), customList.containsAll(collection1));
         assertEquals(arrayList.containsAll(collection2), customList.containsAll(collection2));
+
+        assertFalse(customList.contains(10));
+        assertFalse(customList.contains(8));
+
+        assertTrue(customList.containsAll(Collections.emptyList()));
     }
 
     @Test
