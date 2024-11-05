@@ -429,4 +429,30 @@ public class CustomListTest {
         assertEquals(arrayList.get(0), customList.get(0));
         assertEquals(arrayList.get(1), customList.get(1));
     }
+
+    @Test
+    void testSubList() {
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        for (int i = 1; i <= 10; i++) {
+            customList.add(i);
+            arrayList.add(i);
+        }
+
+        List<Integer> customSubList = customList.subList(3, 7);
+        List<Integer> arraySubList = arrayList.subList(3, 7);
+
+        assertEquals(arraySubList.size(), customSubList.size());
+
+        for (int i = 0; i < arraySubList.size(); i++) {
+            assertEquals(arraySubList.get(i), customSubList.get(i));
+        }
+
+        customSubList.set(0, 100);
+        arraySubList.set(0, 100);
+
+        assertEquals(arrayList.get(3), customList.get(3));
+    }
+
 }
