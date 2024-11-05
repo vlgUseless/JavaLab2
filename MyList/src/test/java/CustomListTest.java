@@ -12,9 +12,11 @@ public class CustomListTest {
         CustomList<Integer> customList = new CustomList<>();
         List<Integer> arrayList = new ArrayList<>();
 
-        assertEquals(customList.isEmpty(), arrayList.isEmpty());
-        assertEquals(customList.size(), Integer.valueOf(0));
-        assertEquals(customList.size(), arrayList.size());
+        assertTrue(customList.isEmpty());
+        assertTrue(arrayList.isEmpty());
+
+        assertEquals(0, customList.size());
+        assertEquals(0, arrayList.size());
     }
 
     @Test
@@ -28,11 +30,11 @@ public class CustomListTest {
         arrayList.add(2);
         arrayList.add(5);
 
-        assertEquals(customList.size(), Integer.valueOf(2));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(2, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.get(0), arrayList.get(0));
-        assertEquals(customList.get(1), arrayList.get(1));
+        assertEquals(arrayList.get(0), customList.get(0));
+        assertEquals(arrayList.get(1), customList.get(1));
     }
 
     @Test
@@ -42,18 +44,19 @@ public class CustomListTest {
 
         customList.add(2);
         customList.add(5);
-        customList.add(1, 3);
 
         arrayList.add(2);
         arrayList.add(5);
+
+        customList.add(1, 3);
         arrayList.add(1, 3);
 
-        assertEquals(customList.size(), Integer.valueOf(3));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(3, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.get(0), arrayList.get(0));
-        assertEquals(customList.get(1), arrayList.get(1));
-        assertEquals(customList.get(2), arrayList.get(2));
+        assertEquals(arrayList.get(0), customList.get(0));
+        assertEquals(arrayList.get(1), customList.get(1));
+        assertEquals(arrayList.get(2), customList.get(2));
     }
 
     @Test
@@ -63,18 +66,19 @@ public class CustomListTest {
 
         customList.add(2);
         customList.add(5);
-        customList.set(1, 3);
 
         arrayList.add(2);
         arrayList.add(5);
+
+        customList.set(1, 3);
         arrayList.set(1, 3);
 
-        assertEquals(customList.size(), Integer.valueOf(2));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(2, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.get(1), Integer.valueOf(3));
-        assertEquals(customList.get(0), arrayList.get(0));
-        assertEquals(customList.get(1), arrayList.get(1));
+        assertEquals(3, customList.get(1));
+        assertEquals(arrayList.get(0), customList.get(0));
+        assertEquals(arrayList.get(1), customList.get(1));
     }
 
     @Test
@@ -84,17 +88,18 @@ public class CustomListTest {
 
         customList.add(2);
         customList.add(5);
-        customList.remove(1);
 
         arrayList.add(2);
         arrayList.add(5);
+
+        customList.remove(1);
         arrayList.remove(1);
 
-        assertEquals(customList.size(), Integer.valueOf(1));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(1, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.get(0), Integer.valueOf(2));
-        assertEquals(customList.get(0), arrayList.get(0));
+        assertEquals(2, customList.get(0));
+        assertEquals(arrayList.get(0), customList.get(0));
     }
 
     @Test
@@ -104,17 +109,18 @@ public class CustomListTest {
 
         customList.add(2);
         customList.add(5);
-        customList.remove(Integer.valueOf(2));
 
         arrayList.add(2);
         arrayList.add(5);
+
+        customList.remove(Integer.valueOf(2));
         arrayList.remove(Integer.valueOf(2));
 
-        assertEquals(customList.size(), Integer.valueOf(1));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(1, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.get(0), Integer.valueOf(5));
-        assertEquals(customList.get(0), arrayList.get(0));
+        assertEquals(5, customList.get(0));
+        assertEquals(arrayList.get(0), customList.get(0));
     }
 
     @Test
@@ -128,13 +134,13 @@ public class CustomListTest {
         arrayList.add(2);
         arrayList.add(5);
 
-        assertEquals(customList.size(), Integer.valueOf(2));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(2, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.contains(2), arrayList.contains(2));
-        assertEquals(customList.contains(5), arrayList.contains(5));
-        assertEquals(customList.contains(-3), arrayList.contains(-3));
-        assertEquals(customList.contains(null), arrayList.contains(null));
+        assertEquals(arrayList.contains(2), customList.contains(2));
+        assertEquals(arrayList.contains(5), customList.contains(5));
+        assertEquals(arrayList.contains(-3), customList.contains(-3));
+        assertEquals(arrayList.contains(null), customList.contains(null));
     }
 
     @Test
@@ -152,11 +158,11 @@ public class CustomListTest {
         arrayList.add(2);
         arrayList.add(5);
 
-        assertEquals(customList.size(), Integer.valueOf(4));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(4, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.indexOf(2), arrayList.indexOf(2));
-        assertEquals(customList.indexOf(5), arrayList.indexOf(5));
+        assertEquals(arrayList.indexOf(2), customList.indexOf(2));
+        assertEquals(arrayList.indexOf(5), customList.indexOf(5));
     }
 
     @Test
@@ -174,11 +180,11 @@ public class CustomListTest {
         arrayList.add(2);
         arrayList.add(5);
 
-        assertEquals(customList.size(), Integer.valueOf(4));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(4, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.lastIndexOf(2), arrayList.lastIndexOf(2));
-        assertEquals(customList.lastIndexOf(5), arrayList.lastIndexOf(5));
+        assertEquals(arrayList.lastIndexOf(2), customList.lastIndexOf(2));
+        assertEquals(arrayList.lastIndexOf(5), customList.lastIndexOf(5));
     }
 
     @Test
@@ -192,15 +198,15 @@ public class CustomListTest {
         arrayList.add(2);
         arrayList.add(5);
 
-        assertEquals(customList.size(), Integer.valueOf(2));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(2, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
         customList.clear();
         arrayList.clear();
 
-        assertEquals(customList.isEmpty(), arrayList.isEmpty());
-        assertEquals(customList.size(), Integer.valueOf(0));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(arrayList.isEmpty(), customList.isEmpty());
+        assertEquals(0, customList.size());
+        assertEquals(0, arrayList.size());
     }
 
     @Test
@@ -216,16 +222,16 @@ public class CustomListTest {
         customList.addAll(collection);
         arrayList.addAll(collection);
 
-        assertEquals(customList.size(), collection.size());
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(collection.size(), customList.size());
+        assertEquals(collection.size(), arrayList.size());
 
-        assertEquals(customList.get(0), Integer.valueOf(2));
-        assertEquals(customList.get(1), Integer.valueOf(5));
-        assertEquals(customList.get(2), Integer.valueOf(3));
+        assertEquals(2, customList.get(0));
+        assertEquals(5, customList.get(1));
+        assertEquals(3, customList.get(2));
 
-        assertEquals(customList.get(0), arrayList.get(0));
-        assertEquals(customList.get(1), arrayList.get(1));
-        assertEquals(customList.get(2), arrayList.get(2));
+        assertEquals(arrayList.get(0), customList.get(0));
+        assertEquals(arrayList.get(1), customList.get(1));
+        assertEquals(arrayList.get(2), customList.get(2));
     }
 
     @Test
@@ -248,11 +254,11 @@ public class CustomListTest {
         customList.removeAll(collection);
         arrayList.removeAll(collection);
 
-        assertEquals(customList.size(), Integer.valueOf(1));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(1, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.get(0), Integer.valueOf(5));
-        assertEquals(customList.get(0), arrayList.get(0));
+        assertEquals(5, customList.get(0));
+        assertEquals(arrayList.get(0), customList.get(0));
     }
 
     @Test
@@ -275,13 +281,13 @@ public class CustomListTest {
         customList.retainAll(collection);
         arrayList.retainAll(collection);
 
-        assertEquals(customList.size(), Integer.valueOf(2));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(2, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.get(0), Integer.valueOf(2));
-        assertEquals(customList.get(1), Integer.valueOf(3));
-        assertEquals(customList.get(0), arrayList.get(0));
-        assertEquals(customList.get(1), arrayList.get(1));
+        assertEquals(2, customList.get(0));
+        assertEquals(3, customList.get(1));
+        assertEquals(arrayList.get(0), customList.get(0));
+        assertEquals(arrayList.get(1), customList.get(1));
     }
 
     @Test
@@ -305,12 +311,11 @@ public class CustomListTest {
         arrayList.add(5);
         arrayList.add(3);
 
+        assertEquals(3, customList.size());
+        assertEquals(arrayList.size(), customList.size());
 
-        assertEquals(customList.size(), Integer.valueOf(3));
-        assertEquals(customList.size(), arrayList.size());
-
-        assertEquals(customList.containsAll(collection1), arrayList.containsAll(collection1));
-        assertEquals(customList.containsAll(collection2), arrayList.containsAll(collection2));
+        assertEquals(arrayList.containsAll(collection1), customList.containsAll(collection1));
+        assertEquals(arrayList.containsAll(collection2), customList.containsAll(collection2));
     }
 
     @Test
@@ -351,15 +356,15 @@ public class CustomListTest {
         ListIterator<Integer> arrayIter = arrayList.listIterator();
 
         while (customIter.hasNext() || arrayIter.hasNext()) {
-            assertEquals(customIter.hasNext(), arrayIter.hasNext());
-            assertEquals(customIter.nextIndex(), arrayIter.nextIndex());
-            assertEquals(customIter.next(), arrayIter.next());
+            assertEquals(arrayIter.hasNext(), customIter.hasNext());
+            assertEquals(arrayIter.nextIndex(), customIter.nextIndex());
+            assertEquals(arrayIter.next(), customIter.next());
         }
 
         while (customIter.hasPrevious() || arrayIter.hasPrevious()) {
-            assertEquals(customIter.hasPrevious(), arrayIter.hasPrevious());
-            assertEquals(customIter.previousIndex(), arrayIter.previousIndex());
-            assertEquals(customIter.previous(), arrayIter.previous());
+            assertEquals(arrayIter.hasPrevious(), customIter.hasPrevious());
+            assertEquals(arrayIter.previousIndex(), customIter.previousIndex());
+            assertEquals(arrayIter.previous(), customIter.previous());
         }
     }
 
@@ -376,17 +381,17 @@ public class CustomListTest {
         arrayList.add(null);
         arrayList.add(3);
 
-        assertEquals(customList.size(), Integer.valueOf(3));
-        assertEquals(customList.size(), arrayList.size());
+        assertEquals(3, customList.size());
+        assertEquals(3, arrayList.size());
 
-        assertEquals(customList.contains(null), arrayList.contains(null));
-        assertEquals(customList.indexOf(null), arrayList.indexOf(null));
+        assertEquals(arrayList.contains(null), customList.contains(null));
+        assertEquals(arrayList.indexOf(null), customList.indexOf(null));
 
-        assertEquals(customList.remove(null), arrayList.remove(null));
+        assertEquals(arrayList.remove(null), customList.remove(null));
 
-        assertEquals(customList.size(), Integer.valueOf(2));
-        assertEquals(customList.size(), arrayList.size());
-        assertEquals(customList.contains(null), arrayList.contains(null));
-        assertEquals(customList.indexOf(null), arrayList.indexOf(null));
+        assertEquals(2, customList.size());
+        assertEquals(2, arrayList.size());
+        assertEquals(arrayList.contains(null), customList.contains(null));
+        assertEquals(arrayList.indexOf(null), customList.indexOf(null));
     }
 }
