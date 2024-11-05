@@ -285,4 +285,33 @@ public class CustomListTest {
         assertEquals(customList.get(0), arrayList.get(0));
         assertEquals(customList.get(1), arrayList.get(1));
     }
+
+    @Test
+    void testContainsAll() {
+        Collection<Integer> collection1 = new ArrayList<>();
+        Collection<Integer> collection2 = new ArrayList<>();
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        collection1.add(2);
+        collection1.add(3);
+
+        collection2.add(10);
+        collection2.add(8);
+
+        customList.add(2);
+        customList.add(5);
+        customList.add(3);
+
+        arrayList.add(2);
+        arrayList.add(5);
+        arrayList.add(3);
+
+
+        assertEquals(customList.size(), Integer.valueOf(3));
+        assertEquals(customList.size(), arrayList.size());
+
+        assertEquals(customList.containsAll(collection1), arrayList.containsAll(collection1));
+        assertEquals(customList.containsAll(collection2), arrayList.containsAll(collection2));
+    }
 }
