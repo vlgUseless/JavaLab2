@@ -186,6 +186,7 @@ public class CustomListTest {
 
         assertEquals(arrayList.lastIndexOf(2), customList.lastIndexOf(2));
         assertEquals(arrayList.lastIndexOf(5), customList.lastIndexOf(5));
+        assertEquals(arrayList.lastIndexOf(10), customList.lastIndexOf(10));
     }
 
     @Test
