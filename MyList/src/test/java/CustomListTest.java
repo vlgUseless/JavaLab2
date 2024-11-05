@@ -163,6 +163,7 @@ public class CustomListTest {
 
         assertEquals(arrayList.indexOf(2), customList.indexOf(2));
         assertEquals(arrayList.indexOf(5), customList.indexOf(5));
+        assertEquals(arrayList.indexOf(10), customList.indexOf(10));
     }
 
     @Test
