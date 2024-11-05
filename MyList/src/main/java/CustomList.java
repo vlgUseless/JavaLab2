@@ -822,18 +822,11 @@ public class CustomList<T> implements List<T> {
      *                                   fromIndex > toIndex})
      */
     @Override
-    @SuppressWarnings("unchecked")
     public List<T> subList(int fromIndex, int toIndex) {
         if (fromIndex < 0 || toIndex > size || fromIndex > toIndex) {
-            throw new IndexOutOfBoundsException("Invalid fromIndex or toIndex");
+            throw new IndexOutOfBoundsException("Invalid subList range");
         }
-
-        CustomList<T> sublist = new CustomList<>();
-        for (int i = fromIndex; i < toIndex; i++) {
-            sublist.add((T) elements[i]);
-        }
-
-        return sublist;
+        return new CustomSubList<>(this, fromIndex, toIndex);
     }
 
     private void ensureCapacity() {
@@ -847,6 +840,52 @@ public class CustomList<T> implements List<T> {
     private void checkIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+    }
+
+    public static class CustomSubList<T> extends AbstractList<T> {
+        private final CustomList<T> parentList;
+        private final int offset;
+        private int size;
+
+        public CustomSubList(CustomList<T> parentList, int fromIndex, int toIndex) {
+            if (fromIndex < 0 || toIndex > parentList.size() || fromIndex > toIndex) {
+                throw new IndexOutOfBoundsException("Invalid subList range");
+            }
+            this.parentList = parentList;
+            this.offset = fromIndex;
+            this.size = toIndex - fromIndex;
+        }
+
+        @Override
+        public T get(int index) {
+            checkIndex(index);
+            return parentList.get(offset + index);
+        }
+
+        @Override
+        public T set(int index, T element) {
+            checkIndex(index);
+            return parentList.set(offset + index, element);
+        }
+
+        @Override
+        public int size() {
+            return this.size;
+        }
+
+        @Override
+        public T remove(int index) {
+            checkIndex(index);
+            T removed = parentList.remove(offset + index);
+            size--;
+            return removed;
+        }
+
+        private void checkIndex(int index) {
+            if (index < 0 || index >= size) {
+                throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+            }
         }
     }
 }
