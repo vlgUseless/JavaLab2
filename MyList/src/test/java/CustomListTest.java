@@ -229,4 +229,31 @@ public class CustomListTest {
         assertEquals(customList.get(1), arrayList.get(1));
         assertEquals(customList.get(2), arrayList.get(2));
     }
+
+    @Test
+    void testRemoveAll() {
+        Collection<Integer> collection = new ArrayList<>();
+        CustomList<Integer> customList = new CustomList<>();
+        List<Integer> arrayList = new ArrayList<>();
+
+        collection.add(2);
+        collection.add(3);
+
+        customList.add(2);
+        customList.add(5);
+        customList.add(3);
+
+        arrayList.add(2);
+        arrayList.add(5);
+        arrayList.add(3);
+
+        customList.removeAll(collection);
+        arrayList.removeAll(collection);
+
+        assertEquals(customList.size(), Integer.valueOf(1));
+        assertEquals(customList.size(), arrayList.size());
+
+        assertEquals(customList.get(0), Integer.valueOf(5));
+        assertEquals(customList.get(0), arrayList.get(0));
+    }
 }
