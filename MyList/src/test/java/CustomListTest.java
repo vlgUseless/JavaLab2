@@ -341,6 +341,7 @@ public class CustomListTest {
     @Test
     void testIterator() {
         CustomList<Integer> customList = new CustomList<>();
+        CustomList<Integer> emptyList = new CustomList<>();
         List<Integer> arrayList = new ArrayList<>();
 
         customList.add(2);
@@ -354,9 +355,13 @@ public class CustomListTest {
         Iterator<Integer> customIter = customList.iterator();
         Iterator<Integer> arrayIter = arrayList.iterator();
 
-        while (customIter.hasNext() || arrayIter.hasNext()) {
+        assertEquals(arrayList.size(), customList.size());
+
+        while (customIter.hasNext() && arrayIter.hasNext()) {
             assertEquals(customIter.next(), arrayIter.next());
         }
+
+        assertFalse(emptyList.iterator().hasNext());
     }
 
     @Test
