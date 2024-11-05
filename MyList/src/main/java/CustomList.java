@@ -858,6 +858,13 @@ public class CustomList<T> implements List<T> {
         }
 
         @Override
+        public void add(int index, T element) {
+            checkIndex(index);
+            parentList.add(offset + index, element);
+            size++;
+        }
+
+        @Override
         public T get(int index) {
             checkIndex(index);
             return parentList.get(offset + index);
