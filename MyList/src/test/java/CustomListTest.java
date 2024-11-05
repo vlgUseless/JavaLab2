@@ -223,6 +223,9 @@ public class CustomListTest {
         collection.add(5);
         collection.add(3);
 
+        customList.addAll(Collections.emptyList());
+        assertEquals(0, customList.size());
+
         customList.addAll(collection);
         arrayList.addAll(collection);
 
@@ -236,6 +239,7 @@ public class CustomListTest {
         assertEquals(arrayList.get(0), customList.get(0));
         assertEquals(arrayList.get(1), customList.get(1));
         assertEquals(arrayList.get(2), customList.get(2));
+
     }
 
     @Test
