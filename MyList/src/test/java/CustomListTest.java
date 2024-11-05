@@ -367,6 +367,7 @@ public class CustomListTest {
     @Test
     void testListIterator() {
         CustomList<Integer> customList = new CustomList<>();
+        CustomList<Integer> emptyList = new CustomList<>();
         List<Integer> arrayList = new ArrayList<>();
 
         customList.add(2);
@@ -378,19 +379,25 @@ public class CustomListTest {
         arrayList.add(3);
 
         ListIterator<Integer> customIter = customList.listIterator();
+        ListIterator<Integer> emptyIter = emptyList.listIterator();
         ListIterator<Integer> arrayIter = arrayList.listIterator();
 
-        while (customIter.hasNext() || arrayIter.hasNext()) {
+        assertEquals(customList.size(), arrayList.size());
+
+        while (customIter.hasNext() && arrayIter.hasNext()) {
             assertEquals(arrayIter.hasNext(), customIter.hasNext());
             assertEquals(arrayIter.nextIndex(), customIter.nextIndex());
             assertEquals(arrayIter.next(), customIter.next());
         }
 
-        while (customIter.hasPrevious() || arrayIter.hasPrevious()) {
+        while (customIter.hasPrevious() && arrayIter.hasPrevious()) {
             assertEquals(arrayIter.hasPrevious(), customIter.hasPrevious());
             assertEquals(arrayIter.previousIndex(), customIter.previousIndex());
             assertEquals(arrayIter.previous(), customIter.previous());
         }
+
+        assertFalse(emptyIter.hasNext());
+        assertFalse(emptyIter.hasPrevious());
     }
 
     @Test
